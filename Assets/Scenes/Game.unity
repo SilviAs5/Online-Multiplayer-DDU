@@ -952,10 +952,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 996125150011262570, guid: a7618cf8a90b44649aad0f38f01fc262, type: 3}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 2593228225697027004, guid: a7618cf8a90b44649aad0f38f01fc262, type: 3}
       propertyPath: cam
       value: 
@@ -964,29 +960,17 @@ PrefabInstance:
       propertyPath: sceneViewId
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 7194664659537348280, guid: a7618cf8a90b44649aad0f38f01fc262, type: 3}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7601456287055092728, guid: a7618cf8a90b44649aad0f38f01fc262, type: 3}
-      propertyPath: m_DrawMode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7601456287055092730, guid: a7618cf8a90b44649aad0f38f01fc262, type: 3}
-      propertyPath: cam
-      value: 
-      objectReference: {fileID: 953333582}
     - target: {fileID: 8266778011230817434, guid: a7618cf8a90b44649aad0f38f01fc262, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8266778011230817434, guid: a7618cf8a90b44649aad0f38f01fc262, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8266778011230817438, guid: a7618cf8a90b44649aad0f38f01fc262, type: 3}
       propertyPath: m_RootOrder
       value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 8266778011230817438, guid: a7618cf8a90b44649aad0f38f01fc262, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8266778011230817438, guid: a7618cf8a90b44649aad0f38f01fc262, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1028,10 +1012,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8266778011230817439, guid: a7618cf8a90b44649aad0f38f01fc262, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 759efed670bcb8f409a29f65e3608d97, type: 3}
-    m_RemovedComponents:
-    - {fileID: 8266778011230817505, guid: a7618cf8a90b44649aad0f38f01fc262, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a7618cf8a90b44649aad0f38f01fc262, type: 3}
