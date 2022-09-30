@@ -5,7 +5,7 @@ using UnityEngine;
 public class RotateWeapon : MonoBehaviour
 {
     public Rigidbody2D rb;
-    public Camera cam;
+    private Camera cam;
 
     Vector2 mousePos;
 
@@ -13,6 +13,7 @@ public class RotateWeapon : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        cam = Camera.main;
     }
 
 
@@ -25,7 +26,7 @@ public class RotateWeapon : MonoBehaviour
     {
         Vector2 lookDir = mousePos - rb.position;
 
-        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg + 180f;
+        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
 
         rb.rotation = angle;
     }

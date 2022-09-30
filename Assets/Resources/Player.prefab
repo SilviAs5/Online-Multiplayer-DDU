@@ -120,7 +120,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 4188053162736682964}
-  cam: {fileID: 0}
 --- !u!1 &7397278555832636536
 GameObject:
   m_ObjectHideFlags: 0
