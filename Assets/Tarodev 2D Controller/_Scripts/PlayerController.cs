@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Photon.Pun;
 
 namespace TarodevController {
     /// <summary>
@@ -26,22 +27,35 @@ namespace TarodevController {
         private bool _active;
         void Awake() => Invoke(nameof(Activate), 0.5f);
         void Activate() =>  _active = true;
-        
+
+        PhotonView view;
+
+        private void Start()
+        {
+            view = GetComponent<PhotonView>();
+        }
+
         private void Update() {
             if(!_active) return;
             // Calculate velocity
-            Velocity = (transform.position - _lastPosition) / Time.deltaTime;
-            _lastPosition = transform.position;
 
-            GatherInput();
-            RunCollisionChecks();
+            if (view.IsMine)
+            {
+                Velocity = (transform.position - _lastPosition) / Time.deltaTime;
+                _lastPosition = transform.position;
 
-            CalculateWalk(); // Horizontal movement
-            CalculateJumpApex(); // Affects fall speed, so calculate before gravity
-            CalculateGravity(); // Vertical movement
-            CalculateJump(); // Possibly overrides vertical
+                GatherInput();
+                RunCollisionChecks();
 
-            MoveCharacter(); // Actually perform the axis movement
+                CalculateWalk(); // Horizontal movement
+                CalculateJumpApex(); // Affects fall speed, so calculate before gravity
+                CalculateGravity(); // Vertical movement
+                CalculateJump(); // Possibly overrides vertical
+
+                MoveCharacter(); // Actually perform the axis movement
+
+            }
+            
         }
 
 
