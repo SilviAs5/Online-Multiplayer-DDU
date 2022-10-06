@@ -10,13 +10,13 @@ public class RotateWeapon : MonoBehaviour
 
     Vector2 mousePos;
 
-    PhotonView view;
+    //PhotonView view;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         cam = Camera.main;
-        view = GetComponentInParent<PhotonView>();
+        //view = GetComponentInParent<PhotonView>();
     }
 
 
@@ -27,14 +27,10 @@ public class RotateWeapon : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (view.IsMine)
-        {
             Vector2 lookDir = mousePos - rb.position;
 
              float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
 
-             rb.rotation = angle;
-        }
-        
+             rb.rotation = angle;     
     }
 }

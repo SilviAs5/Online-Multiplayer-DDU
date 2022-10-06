@@ -157,7 +157,6 @@ namespace TarodevController {
 
         #endregion
 
-
         #region Walk
 
         [Header("WALKING")] [SerializeField] private float _acceleration = 90;
