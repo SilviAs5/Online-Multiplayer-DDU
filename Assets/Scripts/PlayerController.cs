@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
 
     public Transform groundPoint;
     public LayerMask ground;
+    public GameObject playerSprite;
 
     private bool isGrounded;
 
@@ -21,6 +22,7 @@ public class PlayerController : MonoBehaviour
 
     private Vector2 pointerInput;
     private Vector3 mousePos;
+    private Vector2 playerScale;
 
     private WeaponParent weaponParent;
     private FlipSprite flipSprite;
@@ -30,6 +32,8 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         view = GetComponent<PhotonView>();
+        playerScale = playerSprite.transform.localScale;
+
     }
 
     private void Awake()
@@ -45,9 +49,14 @@ public class PlayerController : MonoBehaviour
         {
             //Move the player
             rb.velocity = new Vector2(inputX * moveSpeed, rb.velocity.y);
+            anim.SetFloat("Speed", Mathf.Abs(inputX * moveSpeed));
 
             //Check if player is on the ground
             isGrounded = Physics2D.OverlapCircle(groundPoint.position, .2f, ground);
+            if (isGrounded) //when the player lands on the ground again
+            {
+                rb.gravityScale = 5;
+            }
 
             //Mouse position
             pointerInput = Camera.main.ScreenToWorldPoint(mousePos);
@@ -68,15 +77,11 @@ public class PlayerController : MonoBehaviour
     {
             if (context.performed && isGrounded)
             {
-                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+                rb.velocity = new Vector2(rb.velocity.x, jumpForce); 
             }
             if (context.canceled && isGrounded == false) //if jump button is released in the air
             {
                 rb.gravityScale = 10;
-            }
-            if (isGrounded) //when the player lands on the ground again
-            {
-                rb.gravityScale = 5;
             }
     }
     
