@@ -6,6 +6,7 @@ using Photon.Pun;
 
 public class PlayerController : MonoBehaviour
 {
+    #region Variables
     //SerializeFields
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private float slopeCheckDistance;
@@ -46,6 +47,7 @@ public class PlayerController : MonoBehaviour
     private FlipSprite flipSprite;
 
     PhotonView view;
+    #endregion
 
     private void Start()
     {
@@ -61,26 +63,17 @@ public class PlayerController : MonoBehaviour
         flipSprite = GetComponentInChildren<FlipSprite>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (view.IsMine)
-        {
-            //Mouse position
-            pointerInput = Camera.main.ScreenToWorldPoint(mousePos);
-            //Mouse position is sent to the WeaponParent script and FlipSprite Script
-            weaponParent.PointerPosition = pointerInput;
-            flipSprite.PointerPosition = pointerInput;
-        }
-    }
-
     private void FixedUpdate()
     {
-        SlopeCheck();
-        Move();
-        CheckGround();
+        Multiplayer();
+        if (view.IsMine)
+        {
+            Move();        
+            Mouse();
+            CheckGround();
+            SlopeCheck();
+        }
     }
-
 
     #region Slope
     private void SlopeCheck()
@@ -210,17 +203,34 @@ public class PlayerController : MonoBehaviour
 
     #endregion
 
+    #region Mouse
     public void MousePosition(InputAction.CallbackContext context)
     {
         mousePos = context.ReadValue<Vector2>();
         mousePos.z = Camera.main.nearClipPlane;
     }
 
+    private void Mouse()
+    {
+        //Mouse position
+        pointerInput = Camera.main.ScreenToWorldPoint(mousePos);
+        //Mouse position is sent to the WeaponParent script and FlipSprite Script
+        weaponParent.PointerPosition = pointerInput;
+        flipSprite.PointerPosition = pointerInput;
+    }
+    #endregion
+
+    private void Multiplayer()
+    {
+        if (!view.IsMine)
+        {
+            rb.sharedMaterial = fullFriction;
+        }
+    }
+
     public void Shoot(InputAction.CallbackContext context)
     {
 
     }
-
-
 }
  
