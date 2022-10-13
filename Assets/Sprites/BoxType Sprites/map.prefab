@@ -122,6 +122,16 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
+  - first: {x: 4, y: 0, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 16
+      m_TileSpriteIndex: 16
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
   - first: {x: -3, y: 1, z: 0}
     second:
       serializedVersion: 2
@@ -192,6 +202,16 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
+  - first: {x: 4, y: 1, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 15
+      m_TileSpriteIndex: 15
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
   m_AnimatedTiles: {}
   m_TileAssetArray:
   - m_RefCount: 1
@@ -224,6 +244,10 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: a4dcd55e64d604f4e99d37018da1347a, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 504d0efad35501744895c05804da9ca1, type: 2}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: 98e7b3d9866a46241905d838452e5187, type: 2}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: b60469f04fe0c0d41a872df44b880e43, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 1
     m_Data: {fileID: 21300000, guid: cbc5bf2d25bfb474996eaefb5e135acf, type: 3}
@@ -255,8 +279,12 @@ Tilemap:
     m_Data: {fileID: 21300000, guid: 6d153a2a71675f74c9e74dd37590d1f5, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 21300000, guid: 95d624e2ffddb1c4e892c087203337f0, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 21300000, guid: 84775cef31a69bc4ba678fe47485fbc7, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 21300000, guid: 41debcec09cd9764c813542ba7854d29, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 15
+  - m_RefCount: 17
     m_Data:
       e00: 1
       e01: 0
@@ -275,7 +303,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 15
+  - m_RefCount: 17
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   - m_RefCount: 0
     m_Data: {r: NaN, g: NaN, b: NaN, a: NaN}
@@ -403,7 +431,7 @@ Grid:
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
---- !u!114 &4428212169290407094
+--- !u!114 &3476702676033763832
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

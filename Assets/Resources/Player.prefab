@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5118540808927335055
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8272870248126560536}
+  m_Layer: 3
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8272870248126560536
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5118540808927335055}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.182, y: 0.09, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6009821278490662767}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6009821278490662766
 GameObject:
   m_ObjectHideFlags: 0
@@ -28,7 +59,8 @@ Transform:
   m_LocalPosition: {x: 0.56, y: -0.099, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 8272870248126560536}
   m_Father: {fileID: 6009821278879321577}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -480,6 +512,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8266778011230817438}
   - component: {fileID: 6009821279560274189}
+  - component: {fileID: 1033365644699025919}
   - component: {fileID: 6009821279560274186}
   - component: {fileID: 6009821279560274188}
   - component: {fileID: 6009821279560274191}
@@ -535,6 +568,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!70 &1033365644699025919
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8266778011230817434}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.6363217, y: 0.9063202}
+  m_Direction: 0
 --- !u!61 &6009821279560274186
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -542,7 +591,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8266778011230817434}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -574,14 +623,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 6009821279560274189}
-  moveSpeed: 10
-  jumpForce: 18
+  slopeCheckDistance: 0.5
+  noFriction: {fileID: 6200000, guid: a328963f324439e4c93d3b044eb43d8a, type: 2}
+  fullFriction: {fileID: 6200000, guid: 53ee4f80066136f4faae2f4550f67007, type: 2}
   groundPoint: {fileID: 6009821280061222797}
   ground:
     serializedVersion: 2
     m_Bits: 64
   playerSprite: {fileID: 6009821279284027800}
   anim: {fileID: 5340540508788759000}
+  moveSpeed: 10
+  jumpForce: 18
+  groundPointSize: 0.3
 --- !u!114 &6009821279560274191
 MonoBehaviour:
   m_ObjectHideFlags: 0
