@@ -16,8 +16,11 @@ public class PlayerController : MonoBehaviour
     private CapsuleCollider2D cc;
 
     public Transform groundPoint;
+    public Transform firePoint;
+
     public LayerMask ground;
     public GameObject playerSprite;
+    public GameObject bullet;
 
     public Animator anim;
 
@@ -191,6 +194,10 @@ public class PlayerController : MonoBehaviour
         {
             rb.gravityScale = 5;
         }
+        //if (!isGrounded)
+        //{
+        //    canjump = false;
+        //}
         if (rb.velocity.y <= 0.0f)
         {
             isJumping = false;
@@ -228,9 +235,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void Shoot(InputAction.CallbackContext context)
-    {
-
+    public void Fire(InputAction.CallbackContext context)
+    {   
+        if (context.performed)
+        {
+            Instantiate(bullet, new Vector2(firePoint.transform.position.x, firePoint.transform.position.y), firePoint.transform.rotation);
+        }
     }
 }
- 
