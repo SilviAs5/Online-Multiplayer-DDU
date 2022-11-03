@@ -237,9 +237,10 @@ public class PlayerController : MonoBehaviour
 
     public void Fire(InputAction.CallbackContext context)
     {   
-        if (context.performed)
+        if (context.performed && view.IsMine)
         {
-            Instantiate(bullet, new Vector2(firePoint.transform.position.x, firePoint.transform.position.y), firePoint.transform.rotation);
+            //Instantiate(bullet, new Vector2(firePoint.transform.position.x, firePoint.transform.position.y), firePoint.transform.rotation);
+            PhotonNetwork.Instantiate(bullet.name, firePoint.transform.position, firePoint.transform.rotation);
         }
     }
 }

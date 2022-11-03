@@ -5,7 +5,6 @@ using Photon.Pun;
 
 public class Bullet : MonoBehaviour
 {
-    private BoxCollider2D bc;
     private Rigidbody2D rb;
     private Transform pos;
     [SerializeField] private float bulletForce = 20f;
@@ -13,9 +12,17 @@ public class Bullet : MonoBehaviour
 
     private void Start()
     {
-        bc = GetComponent<BoxCollider2D>();
         rb = GetComponent<Rigidbody2D>();
         pos = GetComponent<Transform>();
         rb.AddForce(pos.right * bulletForce, ForceMode2D.Impulse);
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Ground"))
+        {
+            PhotonNetwork.Destroy(this.gameObject);
+        }
+    }
+
 }
