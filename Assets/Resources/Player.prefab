@@ -514,6 +514,7 @@ GameObject:
   - component: {fileID: 6009821279560274189}
   - component: {fileID: 1033365644699025919}
   - component: {fileID: 6009821279560274188}
+  - component: {fileID: 2709176319689852723}
   - component: {fileID: 6009821279560274191}
   - component: {fileID: 8995353302982767062}
   - component: {fileID: 6009821279588307056}
@@ -610,6 +611,19 @@ MonoBehaviour:
   moveSpeed: 10
   jumpForce: 18
   groundPointSize: 0.3
+--- !u!114 &2709176319689852723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8266778011230817434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d014210b4c767b1429ae7213939cadd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 100
 --- !u!114 &6009821279560274191
 MonoBehaviour:
   m_ObjectHideFlags: 0

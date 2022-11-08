@@ -149,6 +149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletForce: 15
+  damage: 20
 --- !u!114 &5925452145510774012
 MonoBehaviour:
   m_ObjectHideFlags: 0

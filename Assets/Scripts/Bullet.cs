@@ -8,6 +8,7 @@ public class Bullet : MonoBehaviour
     private Rigidbody2D rb;
     private Transform pos;
     [SerializeField] private float bulletForce = 20f;
+    [SerializeField] private int damage;
 
 
     private void Start()
@@ -21,6 +22,12 @@ public class Bullet : MonoBehaviour
     {
         if (other.CompareTag("Ground"))
         {
+            PhotonNetwork.Destroy(this.gameObject);
+        }
+
+        if (other.CompareTag("Player"))
+        {
+            other.GetComponent<HealthScript>().ModifyHealth(damage);
             PhotonNetwork.Destroy(this.gameObject);
         }
     }
