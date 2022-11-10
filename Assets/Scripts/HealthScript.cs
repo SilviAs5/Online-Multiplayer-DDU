@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Photon.Pun;
 
 public class HealthScript : MonoBehaviour
 {
@@ -9,11 +10,15 @@ public class HealthScript : MonoBehaviour
     [SerializeField] private int maxHP = 100;
     public bool isalive = true;
     public Text hbar;
+    PhotonView view;
 
     private void Start()
     {
-        GameObject healthbar = GameObject.FindGameObjectWithTag("Healthbar");
-        hbar = healthbar.GetComponent<Text>();
+        if (view.IsMine)
+        {
+            GameObject healthbar = GameObject.FindGameObjectWithTag("Healthbar");
+            hbar = healthbar.GetComponent<Text>();
+        }
     }
 
     private void Update()
