@@ -17,6 +17,8 @@ public class ServerFeatures : MonoBehaviour
 
     public void AddPlayers()
     {
+        players.Clear();
         players.Add(GameObject.FindGameObjectWithTag("Player"));
+        print("Current players in lobby: " + players.Count);
     }
 }
