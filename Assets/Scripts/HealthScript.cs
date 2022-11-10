@@ -14,11 +14,7 @@ public class HealthScript : MonoBehaviour
 
     private void Start()
     {
-        if (view.IsMine)
-        {
-            GameObject healthbar = GameObject.FindGameObjectWithTag("Healthbar");
-            hbar = healthbar.GetComponent<Text>();
-        }
+        
     }
 
     private void Update()
