@@ -15,14 +15,4 @@ public class ServerFeatures : MonoBehaviour
         ServerNameText.text = PhotonNetwork.CurrentRoom.Name;   
         players = GameObject.FindGameObjectsWithTag("Player");
     }
-
-    private void Update()
-    {
-        print("Current players in lobby: " + players.Length);
-    }
-
-    public void AddPlayers()
-    {
-        //players.Clear();
-    }
 }

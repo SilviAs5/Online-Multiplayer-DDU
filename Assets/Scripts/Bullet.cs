@@ -8,7 +8,7 @@ public class Bullet : MonoBehaviour
     private Rigidbody2D rb;
     private Transform pos;
     [SerializeField] private float bulletForce = 20f;
-    [SerializeField] private int damage;
+    [SerializeField] private int damage = -20;
 
 
     private void Start()

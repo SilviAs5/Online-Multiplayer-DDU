@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Bullet
   - Ground
+  - Healthbar
   layers:
   - Default
   - TransparentFX
