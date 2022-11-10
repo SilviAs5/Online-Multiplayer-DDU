@@ -32,6 +32,7 @@ public class HealthScript : MonoBehaviour
 
     public void ModifyHealth(int n)
     {
-        hp += n;
+        hp -= n;
+        print(hp);
     }
 }
