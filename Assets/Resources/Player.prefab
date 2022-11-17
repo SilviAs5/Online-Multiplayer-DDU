@@ -725,14 +725,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d014210b4c767b1429ae7213939cadd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hpbar: {fileID: 7321674869597063584}
+  pSprite: {fileID: 6009821279284027799}
   hp: 100
   maxHP: 100
   deadColor: {r: 1, g: 1, b: 1, a: 0.39215687}
   aliveColor: {r: 0.65882355, g: 0.7372549, b: 0.2901961, a: 1}
-  isalive: 1
-  run: 1
-  hpbar: {fileID: 7321674869597063584}
-  pSprite: {fileID: 6009821279284027799}
 --- !u!114 &6009821279560274191
 MonoBehaviour:
   m_ObjectHideFlags: 0

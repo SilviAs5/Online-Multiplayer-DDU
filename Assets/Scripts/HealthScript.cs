@@ -17,10 +17,15 @@ public class HealthScript : MonoBehaviour
     private bool isalive = true;
     private bool run = true;
     private Behaviour pc;
+    PhotonView view;
 
     private void Start()
     {
-       pc = GetComponent<PlayerController>();    
+       pc = GetComponent<PlayerController>();
+       if (!view.IsMine)
+       {
+            Destroy(hpbar);
+       }
     }
 
     private void Update()
