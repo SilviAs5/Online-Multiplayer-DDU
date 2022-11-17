@@ -16,6 +16,7 @@ public class HealthScript : MonoBehaviour
 
     private bool isalive = true;
     private bool run = true;
+    private bool disableTxt = false;
     private Behaviour pc;
 
     PhotonView view;
@@ -25,35 +26,42 @@ public class HealthScript : MonoBehaviour
        pc = GetComponent<PlayerController>();
        if (!view.IsMine)
        {
+            disableTxt = true;
             Destroy(hpbar.gameObject);
        }
     }
 
     private void Update()
     {
-        if (hp > maxHP)
+        if (!disableTxt)
         {
-            hp = maxHP;
-        }
-        if (hp <= 0){ //Dead
-            isalive = false;
-            hp = 0;
-            pSprite.color = deadColor;
-        } else if (hp > 0){ //Alive
-            isalive = true;
-            pSprite.color = aliveColor;
-        }
-        hpbar.text = hp+"/"+maxHP.ToString();
+            if (hp > maxHP)
+            {
+                hp = maxHP;
+            }
+            if (hp <= 0)
+            { //Dead
+                isalive = false;
+                hp = 0;
+                pSprite.color = deadColor;
+            }
+            else if (hp > 0)
+            { //Alive
+                isalive = true;
+                pSprite.color = aliveColor;
+            }
+            hpbar.text = hp + "/" + maxHP.ToString();
 
-        if (!isalive && run)
-        {
-            pc.enabled =! pc.enabled;
-            run = false;
-        }
-        else if (isalive && !run)
-        {
-            pc.enabled = !pc.enabled;
-            run = true;
+            if (!isalive && run)
+            {
+                pc.enabled = !pc.enabled;
+                run = false;
+            }
+            else if (isalive && !run)
+            {
+                pc.enabled = !pc.enabled;
+                run = true;
+            }
         }
     }
 
