@@ -7,12 +7,10 @@ using UnityEngine.UI;
 public class ServerFeatures : MonoBehaviour
 {
     public Text ServerNameText;
-    public GameObject[] players;
 
     // Start is called before the first frame update
     void Start()
     {
-        ServerNameText.text = PhotonNetwork.CurrentRoom.Name;   
-        players = GameObject.FindGameObjectsWithTag("Player");
+        ServerNameText.text = PhotonNetwork.CurrentRoom.Name;
     }
 }

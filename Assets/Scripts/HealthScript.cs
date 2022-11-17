@@ -6,15 +6,21 @@ using Photon.Pun;
 
 public class HealthScript : MonoBehaviour
 {
+    public Text hpbar;
+    public SpriteRenderer pSprite;
     public int hp = 100;
+
     [SerializeField] private int maxHP = 100;
-    public bool isalive = true;
-    public Text hbar;
-    PhotonView view;
+    [SerializeField] private Color deadColor;
+    [SerializeField] private Color aliveColor;
+
+    private bool isalive = true;
+    private bool run = true;
+    private Behaviour pc;
 
     private void Start()
     {
-        
+       pc = GetComponent<PlayerController>();    
     }
 
     private void Update()
@@ -23,17 +29,30 @@ public class HealthScript : MonoBehaviour
         {
             hp = maxHP;
         }
-        if (hp <= 0){
+        if (hp <= 0){ //Dead
             isalive = false;
-        } else if (hp > 0){
+            hp = 0;
+            pSprite.color = deadColor;
+        } else if (hp > 0){ //Alive
             isalive = true;
+            pSprite.color = aliveColor;
         }
-        hbar.text = hp+"/"+maxHP.ToString();
+        hpbar.text = hp+"/"+maxHP.ToString();
+
+        if (!isalive && run)
+        {
+            pc.enabled =! pc.enabled;
+            run = false;
+        }
+        else if (isalive && !run)
+        {
+            pc.enabled = !pc.enabled;
+            run = true;
+        }
     }
 
     public void ModifyHealth(int n)
     {
         hp -= n;
-        print(hp);
     }
 }
