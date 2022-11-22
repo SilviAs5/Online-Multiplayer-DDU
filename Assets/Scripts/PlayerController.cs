@@ -59,12 +59,6 @@ public class PlayerController : MonoBehaviour
         playerScale = playerSprite.transform.localScale;
         cc = GetComponent<CapsuleCollider2D>();
         colliderSize = cc.size;
-    }
-
-    private void Awake()
-    {
-        weaponParent = GetComponentInChildren<WeaponParent>();
-        flipSprite = GetComponentInChildren<FlipSprite>();
         if (view.IsMine)
         {
 
@@ -73,6 +67,12 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(ui);
         }
+    }
+
+    private void Awake()
+    {
+        weaponParent = GetComponentInChildren<WeaponParent>();
+        flipSprite = GetComponentInChildren<FlipSprite>();
     }
 
     private void FixedUpdate()
