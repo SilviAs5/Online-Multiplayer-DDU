@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Photon.Pun;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviourPunCallbacks
 {
     #region Variables
     //SerializeFields
@@ -59,11 +59,7 @@ public class PlayerController : MonoBehaviour
         playerScale = playerSprite.transform.localScale;
         cc = GetComponent<CapsuleCollider2D>();
         colliderSize = cc.size;
-        if (view.IsMine)
-        {
-
-        }
-        else
+        if (!view.IsMine)
         {
             Destroy(ui);
         }
