@@ -702,6 +702,7 @@ MonoBehaviour:
   slopeCheckDistance: 0.5
   noFriction: {fileID: 6200000, guid: a328963f324439e4c93d3b044eb43d8a, type: 2}
   fullFriction: {fileID: 6200000, guid: 53ee4f80066136f4faae2f4550f67007, type: 2}
+  ui: {fileID: 8800841240683728067}
   groundPoint: {fileID: 6009821280061222797}
   firePoint: {fileID: 8272870248126560536}
   ground:

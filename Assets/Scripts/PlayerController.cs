@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float slopeCheckDistance;
     [SerializeField] private PhysicsMaterial2D noFriction;
     [SerializeField] private PhysicsMaterial2D fullFriction;
+    [SerializeField] private GameObject ui;
 
     private CapsuleCollider2D cc;
 
@@ -64,6 +65,14 @@ public class PlayerController : MonoBehaviour
     {
         weaponParent = GetComponentInChildren<WeaponParent>();
         flipSprite = GetComponentInChildren<FlipSprite>();
+        if (view.IsMine)
+        {
+
+        }
+        else
+        {
+            Destroy(ui);
+        }
     }
 
     private void FixedUpdate()

@@ -19,17 +19,10 @@ public class HealthScript : MonoBehaviour
     private bool disableTxt = false;
     private Behaviour pc;
 
-    PhotonView view;
 
     private void Start()
     {
-       view = GetComponent<PhotonView>();
        pc = GetComponent<PlayerController>();
-       if (!view.IsMine)
-       {
-            disableTxt = true;
-            Destroy(hpbar.gameObject);
-       }
     }
 
     private void Update()
