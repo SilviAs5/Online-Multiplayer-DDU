@@ -23,6 +23,7 @@ public class HealthScript : MonoBehaviour
 
     private void Start()
     {
+       view = GetComponent<PhotonView>();
        pc = GetComponent<PlayerController>();
        if (!view.IsMine)
        {
