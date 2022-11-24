@@ -678,58 +678,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 118774493}
   m_CullTransparentMesh: 1
---- !u!1 &158762218
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 158762220}
-  - component: {fileID: 158762219}
-  m_Layer: 0
-  m_Name: CreateAndJoinRooms
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &158762219
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 158762218}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb1a76a75a01c4e43b49b58684f188c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  createInput: {fileID: 1023231947}
-  errorText: {fileID: 1252292046}
-  roomNameText: {fileID: 880078508}
-  roomListContent: {fileID: 24238150}
-  roomListItemPrefab: {fileID: 3994156502731778748, guid: 6fea2fd90a094db4e9d328b623517d5d, type: 3}
-  playerListContent: {fileID: 730911686}
-  playerListItemPrefab: {fileID: 3436180614346708665, guid: c4c6018a5bcd2ec4a988e64096084ced, type: 3}
-  startGameButton: {fileID: 1588434429}
---- !u!4 &158762220
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 158762218}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &163077409
 GameObject:
   m_ObjectHideFlags: 0
@@ -957,6 +905,7 @@ GameObject:
   - component: {fileID: 262717799}
   - component: {fileID: 262717798}
   - component: {fileID: 262717802}
+  - component: {fileID: 262717803}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1073,6 +1022,26 @@ MonoBehaviour:
   - {fileID: 818943850}
   - {fileID: 1508567605}
   - {fileID: 1985333931}
+--- !u!114 &262717803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 262717797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb1a76a75a01c4e43b49b58684f188c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  createInput: {fileID: 1023231947}
+  errorText: {fileID: 1252292046}
+  roomNameText: {fileID: 880078508}
+  roomListContent: {fileID: 24238150}
+  roomListItemPrefab: {fileID: 3994156502731778748, guid: 6fea2fd90a094db4e9d328b623517d5d, type: 3}
+  playerListContent: {fileID: 730911686}
+  playerListItemPrefab: {fileID: 3436180614346708665, guid: c4c6018a5bcd2ec4a988e64096084ced, type: 3}
+  startGameButton: {fileID: 1588434429}
 --- !u!1 &263281600
 GameObject:
   m_ObjectHideFlags: 0
@@ -1531,7 +1500,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 158762219}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: CreateAndJoinRooms, Assembly-CSharp
         m_MethodName: CreateRoom
         m_Mode: 1
@@ -3370,9 +3339,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 158762219}
+      - m_Target: {fileID: 262717803}
         m_TargetAssemblyTypeName: CreateAndJoinRooms, Assembly-CSharp
-        m_MethodName: JoinRoom
+        m_MethodName: QuitGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3857,7 +3826,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 158762219}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: CreateAndJoinRooms, Assembly-CSharp
         m_MethodName: LeaveRoom
         m_Mode: 1
@@ -3991,7 +3960,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 158762219}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: CreateAndJoinRooms, Assembly-CSharp
         m_MethodName: StartGame
         m_Mode: 1
@@ -4125,7 +4094,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 158762219}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: CreateAndJoinRooms, Assembly-CSharp
         m_MethodName: CreateRoom
         m_Mode: 1
@@ -4901,7 +4870,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 158762219}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: CreateAndJoinRooms, Assembly-CSharp
         m_MethodName: JoinRoom
         m_Mode: 1
