@@ -41,9 +41,8 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
     {
         MenuManager.Instance.OpenMenu("title");
         Debug.Log("Joined Lobby");
-
+        PhotonNetwork.NickName = "Player " + Random.Range(0, 1000).ToString("0000");
     }
-
     public void CreateRoom()
     {
         if (string.IsNullOrEmpty(createInput.text))
@@ -55,18 +54,10 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
         print("Created room: " + createInput.text);
     }
 
-    public void JoinRoom(RoomInfo info)
-    {
-        print("Joining room: " + info.Name);
-        PhotonNetwork.JoinRoom(info.Name);
-        MenuManager.Instance.OpenMenu("loading");
-    }
-
     public override void OnJoinedRoom()
     {
         MenuManager.Instance.OpenMenu("room");
         roomNameText.text = PhotonNetwork.CurrentRoom.Name;
-        PhotonNetwork.NickName = "Player " + Random.Range(0, 1000).ToString("0000");
         
         Player[] players = PhotonNetwork.PlayerList;
 
@@ -80,6 +71,19 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
     {
         errorText.text = "Room Creation Failed: " + message;
         MenuManager.Instance.OpenMenu("error");
+    }
+
+    public void LeaveRoom()
+    {
+        PhotonNetwork.LeaveRoom();
+        MenuManager.Instance.OpenMenu("loading");
+    }
+
+    public void JoinRoom(RoomInfo info)
+    {
+        print("Joining room: " + info.Name);
+        PhotonNetwork.JoinRoom(info.Name);
+        MenuManager.Instance.OpenMenu("loading");
     }
 
     public override void OnLeftRoom()
