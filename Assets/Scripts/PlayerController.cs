@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Photon.Pun;
 
-public class PlayerController : MonoBehaviourPunCallbacks
+public class PlayerController : MonoBehaviour
 {
     #region Variables
     //SerializeFields
@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
     PhotonView view;
     #endregion
 
-    private void Start()
+    private void Awake()
     {
         view = GetComponent<PhotonView>();
         playerScale = playerSprite.transform.localScale;
@@ -63,10 +63,6 @@ public class PlayerController : MonoBehaviourPunCallbacks
         {
             Destroy(ui);
         }
-    }
-
-    private void Awake()
-    {
         weaponParent = GetComponentInChildren<WeaponParent>();
         flipSprite = GetComponentInChildren<FlipSprite>();
     }
@@ -80,6 +76,13 @@ public class PlayerController : MonoBehaviourPunCallbacks
             Mouse();
             CheckGround();
             SlopeCheck();
+        }
+    }
+    private void Multiplayer()
+    {
+        if (!view.IsMine)
+        {
+            rb.sharedMaterial = fullFriction;
         }
     }
 
@@ -146,11 +149,6 @@ public class PlayerController : MonoBehaviourPunCallbacks
     }
     #endregion
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireSphere(groundPoint.position, groundPointSize);
-    }
-
     #region Move
     public void Move(InputAction.CallbackContext context)
     {
@@ -191,6 +189,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
                 rb.gravityScale = 10;
             }
     }
+
     private void CheckGround()
     {
         //Check if player is on the ground
@@ -201,6 +200,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
         }
         //if (!isGrounded)
         //{
+        //    yield return new WaitForSeconds(0.2f);
         //    canjump = false;
         //}
         if (rb.velocity.y <= 0.0f)
@@ -211,6 +211,11 @@ public class PlayerController : MonoBehaviourPunCallbacks
         {
             canjump = true;
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(groundPoint.position, groundPointSize);
     }
 
     #endregion
@@ -232,14 +237,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
     }
     #endregion
 
-    private void Multiplayer()
-    {
-        if (!view.IsMine)
-        {
-            rb.sharedMaterial = fullFriction;
-        }
-    }
-
+    #region Shooting
     public void Fire(InputAction.CallbackContext context)
     {   
         if (context.performed && view.IsMine)
@@ -248,4 +246,5 @@ public class PlayerController : MonoBehaviourPunCallbacks
             PhotonNetwork.Instantiate(bullet.name, firePoint.transform.position, firePoint.transform.rotation);
         }
     }
+    #endregion
 }
