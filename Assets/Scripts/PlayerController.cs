@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Photon.Pun;
+using Hashtable = ExitGames.Client.Photon.Hashtable;
+using Photon.Realtime;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviourPunCallbacks
 {
     #region Variables
     //SerializeFields
@@ -13,6 +15,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private PhysicsMaterial2D noFriction;
     [SerializeField] private PhysicsMaterial2D fullFriction;
     [SerializeField] private GameObject ui;
+    [SerializeField] private Item[] items;
 
     private CapsuleCollider2D cc;
 
@@ -22,7 +25,6 @@ public class PlayerController : MonoBehaviour
     public LayerMask ground;
     public GameObject playerSprite;
     public GameObject bullet;
-
     public Animator anim;
 
     //Booleans
@@ -39,6 +41,10 @@ public class PlayerController : MonoBehaviour
     private float slopeDownAngle;
     private float slopeDownAngleOld;
     private float slopeSideAngle;
+
+    //Intagers
+    private int itemIndex;
+    private int previousItemIndex = -1;
 
     //Vectors
     private Vector2 pointerInput;
@@ -59,12 +65,24 @@ public class PlayerController : MonoBehaviour
         playerScale = playerSprite.transform.localScale;
         cc = GetComponent<CapsuleCollider2D>();
         colliderSize = cc.size;
-        if (!view.IsMine)
+        if (view.IsMine)
+        {
+            EquipItem(0);
+        }
+        else
         {
             Destroy(ui);
         }
         weaponParent = GetComponentInChildren<WeaponParent>();
         flipSprite = GetComponentInChildren<FlipSprite>();
+    }
+
+    private void Update()
+    {
+        if (view.IsMine)
+        {
+            UpdateWeapons();
+        }
     }
 
     private void FixedUpdate()
@@ -78,6 +96,15 @@ public class PlayerController : MonoBehaviour
             SlopeCheck();
         }
     }
+
+    public override void OnPlayerPropertiesUpdate(Player targetPlayer, Hashtable changedProps)
+    {
+        if (!view.IsMine && targetPlayer == view.Owner)
+        {
+            EquipItem((int)changedProps["itemIndex"]);
+        }
+    }
+
     private void Multiplayer()
     {
         if (!view.IsMine)
@@ -238,6 +265,71 @@ public class PlayerController : MonoBehaviour
     #endregion
 
     #region Shooting
+    void UpdateWeapons()
+    {
+        for (int i = 0; i < items.Length; i++)
+        {
+            if (Input.GetKeyDown((i + 1).ToString()))
+            {
+                EquipItem(i);
+                break;
+            }
+        }
+
+        if (Input.GetAxisRaw("Mouse ScrollWheel") > 0f)
+        {
+            if (itemIndex >= items.Length - 1)
+            {
+                EquipItem(0);
+            }
+            else
+            {
+                EquipItem(itemIndex + 1);
+            }
+        }
+        else if (Input.GetAxisRaw("Mouse ScrollWheel") < 0f)
+        {
+            if (itemIndex <= 0)
+            {
+                EquipItem(items.Length - 1);
+            }
+            else
+            {
+                EquipItem(itemIndex - 1);
+            }
+        }
+        
+
+        
+    } 
+
+    void EquipItem(int _index)
+    {
+        if (_index == previousItemIndex)
+        {
+            return;
+        }
+
+        itemIndex = _index;
+
+        items[itemIndex].itemGameObject.SetActive(true);
+
+        if (previousItemIndex != -1)
+        {
+            items[previousItemIndex].itemGameObject.SetActive(false);
+        }
+
+        previousItemIndex = itemIndex;
+
+        if (view.IsMine)
+        {
+            Hashtable hash = new Hashtable();
+            hash.Add("itemIndex", itemIndex);
+            PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
+
+        }
+    }
+    
     public void Fire(InputAction.CallbackContext context)
     {   
         if (context.performed && view.IsMine)
