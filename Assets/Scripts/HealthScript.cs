@@ -10,7 +10,7 @@ public class HealthScript : MonoBehaviour, IDamageable
     public SpriteRenderer pSprite;
     public int hp = 100;
 
-    [SerializeField] private int maxHP = 100;
+    [SerializeField] private int  maxHP = 100;
     [SerializeField] private Color deadColor;
     [SerializeField] private Color aliveColor;
 
@@ -61,17 +61,17 @@ public class HealthScript : MonoBehaviour, IDamageable
         }
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(int damage)
     {
         view.RPC("RPC_TakeDamage", RpcTarget.All, damage);
     }
 
     [PunRPC]
-    void RPC_TakeDamage(float damage)
+    void RPC_TakeDamage(int damage)
     {
         if (!view.IsMine)
             return;
 
-        Debug.Log("Took Damage: " + damage);
+        hp -= damage;
     }
 }
