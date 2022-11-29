@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
     private bool isOnSlope;
     private bool isJumping;
     private bool canjump;
+    private bool isAlive;
 
     //floats
     public float moveSpeed, jumpForce;
@@ -64,6 +65,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
         view = GetComponent<PhotonView>();
         playerScale = playerSprite.transform.localScale;
         cc = GetComponent<CapsuleCollider2D>();
+        isAlive = GetComponent<HealthScript>().isalive;
         colliderSize = cc.size;
         if (view.IsMine)
         {
@@ -329,7 +331,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
     
     public void Fire(InputAction.CallbackContext context)
     {   
-        if (context.performed && view.IsMine)
+        if (context.performed && view.IsMine && isAlive)
         {
             //Instantiate(bullet, new Vector2(firePoint.transform.position.x, firePoint.transform.position.y), firePoint.transform.rotation);
             PhotonNetwork.Instantiate(bullet.name, firePoint.transform.position, firePoint.transform.rotation);

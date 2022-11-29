@@ -13,21 +13,31 @@ public class HealthScript : MonoBehaviour, IDamageable
     [SerializeField] private int  maxHP = 100;
     [SerializeField] private Color deadColor;
     [SerializeField] private Color aliveColor;
+    [SerializeField] private GameObject itemHolder;
 
-    private bool isalive = true;
+    public bool isalive = true;
     private bool run = true;
     private bool disableTxt = false;
     private Behaviour pc;
 
     PhotonView view;
+    PlayerManager playerManager;
 
     private void Start()
     {
        pc = GetComponent<PlayerController>();
        view = GetComponent<PhotonView>();
+
+        playerManager = PhotonView.Find((int)view.InstantiationData[0]).GetComponent<PlayerManager>();
     }
 
     private void Update()
+    {
+        UpdateHealth();
+        IsDead();
+    }
+
+    private void UpdateHealth()
     {
         if (!disableTxt)
         {
@@ -35,16 +45,13 @@ public class HealthScript : MonoBehaviour, IDamageable
             {
                 hp = maxHP;
             }
-            if (hp <= 0)
-            { //Dead
+            if (hp <= 0) //Dead
+            { 
                 isalive = false;
-                hp = 0;
-                pSprite.color = deadColor;
             }
-            else if (hp > 0)
-            { //Alive
+            else if (hp > 0) //Alive
+            { 
                 isalive = true;
-                pSprite.color = aliveColor;
             }
             hpbar.text = hp + "/" + maxHP.ToString();
 
@@ -61,6 +68,22 @@ public class HealthScript : MonoBehaviour, IDamageable
         }
     }
 
+    private void IsDead()
+    {
+        if (!isalive) //Dead
+        {
+            hp = 0;
+            pSprite.color = deadColor;
+            itemHolder.SetActive(false);
+        }
+        else if (isalive) //Alive
+        {
+            pSprite.color = aliveColor;
+            itemHolder.SetActive(true);
+        }
+
+    }
+
     public void TakeDamage(int damage)
     {
         view.RPC("RPC_TakeDamage", RpcTarget.All, damage);
@@ -72,6 +95,18 @@ public class HealthScript : MonoBehaviour, IDamageable
         if (!view.IsMine)
             return;
 
-        hp -= damage;
+        if (hp > 0)
+        {
+            hp -= damage;
+        }
+        else if (hp <= 0)
+        {
+            Die();
+        }
+    }
+    
+    void Die()
+    {
+        playerManager.Die();
     }
 }
