@@ -20,16 +20,19 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Ground"))
-        {
-            PhotonNetwork.Destroy(this.gameObject);
-        }
+        other.GetComponent<IDamageable>()?.TakeDamage(damage);
+        PhotonNetwork.Destroy(this.gameObject);
 
-        if (other.CompareTag("Player"))
-        {
-            other.GetComponent<HealthScript>().ModifyHealth(damage);
-            PhotonNetwork.Destroy(this.gameObject);
-        }
+        //if (other.CompareTag("Ground"))
+        //{
+        //    PhotonNetwork.Destroy(this.gameObject);
+        //}
+
+        //if (other.CompareTag("Player"))
+        //{
+        //    other.GetComponent<HealthScript>().ModifyHealth(damage);
+        //    PhotonNetwork.Destroy(this.gameObject);
+        //}
     }
 
 }

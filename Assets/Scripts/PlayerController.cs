@@ -298,9 +298,6 @@ public class PlayerController : MonoBehaviourPunCallbacks
                 EquipItem(itemIndex - 1);
             }
         }
-        
-
-        
     } 
 
     void EquipItem(int _index)
@@ -336,6 +333,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
         {
             //Instantiate(bullet, new Vector2(firePoint.transform.position.x, firePoint.transform.position.y), firePoint.transform.rotation);
             PhotonNetwork.Instantiate(bullet.name, firePoint.transform.position, firePoint.transform.rotation);
+            //items[itemIndex].Use();
         }
     }
     #endregion

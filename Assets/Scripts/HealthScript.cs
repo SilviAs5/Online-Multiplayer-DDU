@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
 
-public class HealthScript : MonoBehaviour
+public class HealthScript : MonoBehaviour, IDamageable
 {
     public Text hpbar;
     public SpriteRenderer pSprite;
@@ -19,10 +19,12 @@ public class HealthScript : MonoBehaviour
     private bool disableTxt = false;
     private Behaviour pc;
 
+    PhotonView view;
 
     private void Start()
     {
        pc = GetComponent<PlayerController>();
+       view = GetComponent<PhotonView>();
     }
 
     private void Update()
@@ -59,8 +61,17 @@ public class HealthScript : MonoBehaviour
         }
     }
 
-    public void ModifyHealth(int n)
+    public void TakeDamage(float damage)
     {
-        hp -= n;
+        view.RPC("RPC_TakeDamage", RpcTarget.All, damage);
+    }
+
+    [PunRPC]
+    void RPC_TakeDamage(float damage)
+    {
+        if (!view.IsMine)
+            return;
+
+        Debug.Log("Took Damage: " + damage);
     }
 }

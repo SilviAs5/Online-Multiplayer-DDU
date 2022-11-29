@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1909046285453740580}
-  - component: {fileID: 7835023449877610049}
+  - component: {fileID: 8307831207971600367}
   m_Layer: 3
   m_Name: PistolItem
   m_TagString: Untagged
@@ -64,7 +64,7 @@ Transform:
   m_Father: {fileID: 6009821278879321577}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7835023449877610049
+--- !u!114 &8307831207971600367
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -73,11 +73,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 5930734320096217884}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dadb6031311a8774baae4def788699f5, type: 3}
+  m_Script: {fileID: 11500000, guid: f49ac44ae870dab4c910914ed34d28a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   itemInfo: {fileID: 11400000, guid: d37ebd749a75d0444b8df5a3c252970f, type: 2}
   itemGameObject: {fileID: 6009821278490662766}
+  firePos: {fileID: 5118540808927335055}
 --- !u!1 &6009821278490662766
 GameObject:
   m_ObjectHideFlags: 0
@@ -837,8 +838,7 @@ MonoBehaviour:
   fullFriction: {fileID: 6200000, guid: 53ee4f80066136f4faae2f4550f67007, type: 2}
   ui: {fileID: 8800841240683728067}
   items:
-  - {fileID: 7835023449877610049}
-  - {fileID: 1829947283788484929}
+  - {fileID: 8307831207971600367}
   groundPoint: {fileID: 6009821280061222797}
   firePoint: {fileID: 8272870248126560536}
   ground:
@@ -1165,14 +1165,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1658970729392989032}
-  - component: {fileID: 1829947283788484929}
+  - component: {fileID: 2234658728439982845}
   m_Layer: 3
   m_Name: RifleItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1658970729392989032
 Transform:
   m_ObjectHideFlags: 0
@@ -1189,7 +1189,7 @@ Transform:
   m_Father: {fileID: 6009821278879321577}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1829947283788484929
+--- !u!114 &2234658728439982845
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1198,11 +1198,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 8519306623472814535}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dadb6031311a8774baae4def788699f5, type: 3}
+  m_Script: {fileID: 11500000, guid: f49ac44ae870dab4c910914ed34d28a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   itemInfo: {fileID: 11400000, guid: 102769534e1c60e419e6d2a22dff1278, type: 2}
   itemGameObject: {fileID: 6202557034012145483}
+  firePos: {fileID: 9048942493339129948}
 --- !u!1 &8800841240683728067
 GameObject:
   m_ObjectHideFlags: 0
