@@ -36,7 +36,7 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
     {
         Debug.Log("Connected to Master");
         PhotonNetwork.JoinLobby();
-        PhotonNetwork.AutomaticallySyncScene = true;
+        //PhotonNetwork.AutomaticallySyncScene = true;
     }
 
     public override void OnJoinedLobby()
@@ -137,6 +137,4 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
     {
         Application.Quit();
     }
-
-
 }
