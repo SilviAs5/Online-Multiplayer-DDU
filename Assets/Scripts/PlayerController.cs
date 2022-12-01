@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
     private float slopeDownAngleOld;
     private float slopeSideAngle;
 
-    //Intagers
+    //Integers
     private int itemIndex;
     private int previousItemIndex = -1;
 

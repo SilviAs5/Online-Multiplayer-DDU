@@ -53,7 +53,7 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
         }
         PhotonNetwork.CreateRoom(createInput.text);
         MenuManager.Instance.OpenMenu("loading");
-        print("Created room: " + createInput.text);
+        print("Creating room: " + createInput.text);
     }
 
     public override void OnJoinedRoom()
